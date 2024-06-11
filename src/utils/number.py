@@ -7,13 +7,14 @@ def getRandomNumber() -> int :
 def isPrime(n: int, k: int = 10) -> bool:
   if (n <= 1): return False
   if (n <= 3): return True
-  if (n % 2 == 0): return False
+  if (n % 2 == 0 or n % 3 == 0): return False
 
-  r = 0
-  d = n - 1
-  while (d % 2 == 0):
-    r += 1
-    d >>=1
+  i = 5
+  while i * i <= n:
+      if n % i == 0 or n % (i + 2) == 0:
+          return False
+      i += 6
+  return True
 
 def generatePrimeNumber() -> int:
   while (True):

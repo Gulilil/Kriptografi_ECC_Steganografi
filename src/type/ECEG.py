@@ -27,7 +27,7 @@ class ECEG :
       self.bVal = generatePrimeNumber()
       check = 4 * (self.aVal ** 3) + 27 * (self.bVal ** 2) 
 
-    for i in range (len(self.pVal-1)):
+    for i in range (self.pVal-1):
       res = self.calculateY(i)
       selection1 = (res % 1 == 0)
       selection2 = (res > 0 and res < self.pVal)
@@ -79,8 +79,8 @@ class ECEG :
     else:
       m = calculateGradient(p1, p2, self.pVal)
     
-    x = self.calculateCoorX(p1, p2, m)
-    y = self.calculateCoorY(p1, p2, m)
+    x = int(self.calculateCoorX(p1, p2, m))
+    y = int(self.calculateCoorY(p1, p2, m))
 
     return Point(x, y)
   
@@ -96,7 +96,7 @@ class ECEG :
     if isinstance(n, str):  
       n = makeHexToNum(n)
 
-    multiplicationDict = dict()
+    multiplicationDict = list()
     exp = 1
     idx = 0
     tempPoint = Point(0, 0)

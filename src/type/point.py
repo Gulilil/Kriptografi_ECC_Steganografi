@@ -19,9 +19,12 @@ class Point:
   def isInverse (self, p: object, pVal: int) -> bool:
     return self.x == p.x and self.y == abs(pVal - p.y)
   
+  def getPointNumberValue(self) -> str:
+    return "x: "+str(self.x)+", y: "+str(self.y)
+  
   def getPointValue (self) -> str:
-    xHex = makeNumToHex(self.x).rjust(8, '0')
-    yHex = makeNumToHex(self.y).rjust(8, '0')
+    xHex = makeNumToHex(int(self.x)).rjust(8, '0')
+    yHex = makeNumToHex(int(self.y)).rjust(8, '0')
     return xHex + yHex
   
   def setPointValue (self, val: str):

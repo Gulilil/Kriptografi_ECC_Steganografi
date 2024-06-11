@@ -28,7 +28,7 @@ class ECEG :
       check = 4 * (self.aVal ** 3) + 27 * (self.bVal ** 2) 
 
     for i in range (self.pVal-1):
-      res = self.calculateY(i)
+      res = int(self.calculateY(i))
       selection1 = (res % 1 == 0)
       selection2 = (res > 0 and res < self.pVal)
       if (selection1 and selection2):
@@ -150,32 +150,4 @@ class ECEG :
     p2 = pairPoint.p2
     bkB = self.multiplyPoint(p1, privateKey)
     return self.minusPoint(p2, bkB)
-  
-  def getValueFromPairPoint(self, pairPoint: PairPoint) -> PairPoint:
-    pairPointVal = PairPointValue(pairPoint.p1.getPointValue(), pairPoint.p2.getPointValue())
-    return pairPointVal
-  
-  def getPointFromPairPointValue(self, pairPointVal : PairPointValue) -> PairPoint:
-    p1 = Point(0,0)
-    p1.setPointValue(pairPointVal.p1Val)
-    p2 = Point(0,0)
-    p2.setPointValue(pairPointVal.p2Val)
-
-    pairPoint = PairPoint (p1, p2)
-    return pairPoint
-  
-  def makePairPointValueToString (self, pairPointVal: PairPointValue) -> str:
-    return pairPointVal.p1Val + pairPointVal.p2Val
-  
-  def makeStringToPairPointValue(self, val: str) -> PairPointValue:
-    p1Val = val[:16]
-    p2Val = val[16:]
-    pairPointVal = PairPointValue(p1Val, p2Val)
-    return pairPointVal
-  
-  def getKValue (self) -> int:
-    k = generatePrimeNumber()
-    while (k < 1 or k > self.pVal -1):
-      k = generatePrimeNumber()
-    return k
   

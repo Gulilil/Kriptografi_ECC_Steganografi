@@ -20,7 +20,7 @@ def generatePrimeNumber() -> int:
   while (True):
     num = getRandomNumber()
     if (isPrime(num)):
-      return num
+      return int(num)
     
 def modExp(base: int, exp: int, mod: int) -> int:
   result = 1

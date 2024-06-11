@@ -1,6 +1,7 @@
 from type.ECEG import ECEG
 from utils.number import generatePrimeNumber
 from utils.functions import makeNumToHex
+from utils.calculation import getKValue
 
 if __name__ == "__main__":
   incorrectCount = 0
@@ -9,7 +10,7 @@ if __name__ == "__main__":
     print("a: ",temp.aVal," b: ",temp.bVal ," p: ",temp.pVal)
     
     basePoint = temp.getRandomPoint()
-    print("TEMP POINT", basePoint)
+    print("TEMP POINT", basePoint.getPointNumberValue())
     
     aPrivKey = generatePrimeNumber();
     bPrivKey = generatePrimeNumber();
@@ -27,7 +28,7 @@ if __name__ == "__main__":
 
     print("SECRET POINT", secretPoint.getPointNumberValue(), "|", secretPoint.getPointValue())
 
-    k = temp.getKValue()
+    k = getKValue(temp.pVal)
     
     pairPoint = temp.encryptECEG(k, basePoint, secretPoint, bPubKey)
     decryptedSecretPoint = temp.decryptECEG(bPrivKey, pairPoint)

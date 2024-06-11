@@ -1,10 +1,24 @@
 import math
 
+def makeNumToBin (num: int) -> str:
+  return bin(num)
+
 def makeNumToHex (num: int) -> str:
-  return hex(num)
+  return hex(num)[2:]
 
 def makeHexToNum (hex: str) -> int:
-  return int(hex)
+  return int(hex, 16)
+
+def makeBinToNum (bin: str) -> int:
+  return int(bin, 2)
+
+def makeHexToBin (hex: str) -> str:
+  num = makeHexToNum(hex)
+  return makeNumToBin(num)
+
+def makeBinToHex (bin: str) -> str:
+  num = makeBinToNum(bin)
+  return makeNumToHex(num)
 
 def isSquare(n: int) -> bool:
   return (math.sqrt(n) % 1 ) == 0

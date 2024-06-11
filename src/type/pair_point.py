@@ -1,4 +1,4 @@
-from .point import Point
+from type.point import Point
 
 class PairPoint:
   def __init__(self, p1: Point, p2: Point):

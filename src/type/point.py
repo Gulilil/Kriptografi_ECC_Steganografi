@@ -1,4 +1,4 @@
-from ..utils.functions import makeHexToNum, makeNumToHex
+from utils.functions import makeHexToNum, makeNumToHex
 
 class Point:
   def __init__(self, x: int, y: int):
@@ -9,14 +9,14 @@ class Point:
     self.x = x
     self.y = y
   
-  def copyPoint(self, p: Point):
+  def copyPoint(self, p: object):
     self.x = p.x
     self.y = p.y
 
-  def isSamePoint(self, p: Point) -> bool:
+  def isSamePoint(self, p: object) -> bool:
     return self.x == p.x and self.y == p.y
   
-  def isInverse (self, p: Point, pVal: int) -> bool:
+  def isInverse (self, p: object, pVal: int) -> bool:
     return self.x == p.x and self.y == abs(pVal - p.y)
   
   def getPointValue (self) -> str:

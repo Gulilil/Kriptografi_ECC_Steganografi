@@ -1,8 +1,8 @@
 import random
-from constant import *
+from utils.constant import LOWER_THRESHOLD, UPPER_THRESHOLD
 
 def getRandomNumber() -> int :
-  return random.randint(THRESHOLD_RANGE)
+  return random.randint(LOWER_THRESHOLD, UPPER_THRESHOLD)
 
 def isPrime(n: int, k: int = 10) -> bool:
   if (n <= 1): return False

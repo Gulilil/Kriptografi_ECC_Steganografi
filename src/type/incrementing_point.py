@@ -1,4 +1,4 @@
-from .point import Point
+from type.point import Point
 
 class IncrementingPoint:
   def __init__(self, exponent: int, point: Point):

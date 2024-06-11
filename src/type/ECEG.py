@@ -1,10 +1,11 @@
-from .point import Point
-from .ECC_base import ECCBase
-from .incrementing_point import IncrementingPoint
-from .pair_point import PairPoint, PairPointValue
-from ..utils.number import generatePrimeNumber
-from ..utils.functions import positiveModulo, calculateGradient, calculateGradientHomogenous, makeHexToNum, makeNumToHex
-from ..utils.constant import INFINITY_POINT
+from type.point import Point
+from type.ECC_base import ECCBase
+from type.incrementing_point import IncrementingPoint
+from type.pair_point import PairPoint, PairPointValue
+from utils.number import generatePrimeNumber
+from utils.functions import positiveModulo, makeHexToNum, makeNumToHex
+from utils.constant import INFINITY_POINT
+from utils.calculation import calculateGradient, calculateGradientHomogenous
 import math
 import random
 
@@ -177,7 +178,4 @@ class ECEG :
     while (k < 1 or k > self.pVal -1):
       k = generatePrimeNumber()
     return k
-  
-
-
   

@@ -39,7 +39,7 @@ def encryption():
     print(f"K Value: {k}")
 
     # Determine which public key to use
-    used_pub_key_hex = input("Insert the Hex Value of the Public Key to be used: ")
+    used_pub_key_hex = input("\nInsert the Hex Value of the Public Key to be used: ")
     used_pub_key = Point(0,0)
     used_pub_key.setPointValue(used_pub_key_hex)
 
@@ -51,7 +51,7 @@ def encryption():
     print("")
     print(f"Encrypted Value Hex: {encrypted_value}")
     print(f"Encrypted Value Bin: {binary_encrypted_value}")
-    print(f"Encrypted Value Length: {len(binary_encrypted_value)}")
+    print(f"Encrypted Value Attribute: {len(binary_encrypted_value) * (base_point.y + 2 * base_point.x)}")
 
     # Manipulate Image
     new_image = manipulate_image(image, base_point, binary_encrypted_value)

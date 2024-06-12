@@ -73,10 +73,11 @@ def save_image(image):
 
   image_names = IMAGE_NAME.split(".")
   image_name = image_names[0]+"-enc"
-  image_extension = image_names[1]
+  image_extension = "png"
 
   result_image_name = image_name+"."+image_extension
   image.save(os.path.join(test_dir, result_image_name))
+  print("")
   print("Image has been saved inside the /test folder.")
   print("Encrypted image will have the tag \"-enc\".")
 
@@ -95,3 +96,5 @@ def search_image(image, base_point: Point, encrypted_length: int) -> str:
       result_binary += str(curr_lsb)
     
     return result_binary
+
+

@@ -19,8 +19,8 @@ def decryption():
     pVal = int(input("Insert 'p' Value: "))
     basePointXVal = int(input("Insert x Value of Base Point: "))
     basePointYVal = int(input("Insert y Value of Base Point: "))
-    encrypted_length = int(input("Insert encrypted length: "))
     used_private_key = int(input("Insert Private Key to be used: "))
+    encrypted_attrib = int(input("Insert Encrypted Attribute: "))
 
     # Initiate ECEG
     eceg = ECEG()
@@ -29,6 +29,7 @@ def decryption():
     eceg.setBasePoint(basePoint)
 
     # Search for encrypted val
+    encrypted_length = encrypted_attrib // (basePoint.y + 2 * basePoint.x)
     encrypted_value = search_image(image, basePoint, encrypted_length)
     hex_encrypted_value = makeBinToHex(encrypted_value).rjust(32, '0')
     print("")

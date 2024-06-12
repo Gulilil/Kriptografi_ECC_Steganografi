@@ -94,6 +94,7 @@ class ECEG :
   def multiplyPoint(self, p: Point, n: int | str) -> Point:
 
     if isinstance(n, str):  
+      print('test')
       n = makeHexToNum(n)
 
     multiplicationDict = list()

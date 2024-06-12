@@ -88,6 +88,10 @@ def search_image(image, base_point: Point, encrypted_length: int) -> str:
 
     pixel_length = len(pixel_values)
     result_binary = ""
-    
+
     for i in range(encrypted_length):
       curr_px = int(pixel_values[(start_idx + i) % pixel_length])
+      curr_lsb = curr_px & 1
+      result_binary += str(curr_lsb)
+    
+    return result_binary

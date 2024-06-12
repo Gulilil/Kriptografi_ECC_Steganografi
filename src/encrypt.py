@@ -28,9 +28,9 @@ def encryption():
     print(f"\nUser A Data:\n Private Key: {a_private_key}\n Public Key: {a_public_key.getPointNumberValue()} | Hex Value: {a_public_key.getPointValue()}")
     print(f"\nUser B Data:\n Private Key: {b_private_key}\n Public Key: {b_public_key.getPointNumberValue()} | Hex Value: {b_public_key.getPointValue()}")
 
-
-
-
+    # =================
+    # =====ENCRYPT=====
+    # =================
 
     # Secret Point
     secret_point = eceg.getRandomPoint()

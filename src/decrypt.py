@@ -1,37 +1,29 @@
 from type.point import Point
 from type.ECEG import ECEG
+from image_processor import read_image
 
-import matplotlib.image as img
 import os
 
 def decryption():
-  cwd = os.getcwd()
-  test_dir = os.path.join(cwd, "test")
 
   # Check Validity of Image
-  is_valid = False
   image = None
-  while (not is_valid):
-    try :
-      print("Make sure to insert the image inside the /test folder.")
-      filename = input("Insert the image filename: ")
-      file_path = os.path.join(test_dir, filename)
-      image = img.imread(file_path)
-      is_valid = True
-    except:
-      print("Image not found! Please make sure to enter a valid image filename.")
+  image = read_image()
 
-  aVal = input("Insert a Value: ")
-  bVal = input("Insert b Value: ")
-  pVal = input("Insert p Value: ")
-  basePointXVal = input("Insert x Value of Base Point: ")
-  basePointYVal = input("Insert y Value of Base Point: ")
+# Make sure the image is valid
+  if (image is not None):
+    aVal = input("Insert a Value: ")
+    bVal = input("Insert b Value: ")
+    pVal = input("Insert p Value: ")
+    basePointXVal = input("Insert x Value of Base Point: ")
+    basePointYVal = input("Insert y Value of Base Point: ")
+    encrypted_length = input("Insert encrypted length: ")
+    used_private_key = input("Insert Private Key to be used: ")
 
-  basePoint = Point(basePointXVal, basePointYVal)
-
-  # Initiate ECEG
-  eceg = ECEG()
-  eceg.setValue(aVal, bVal, pVal)
-  eceg.setBasePoint(basePoint)
+    # Initiate ECEG
+    eceg = ECEG()
+    eceg.setValue(aVal, bVal, pVal)
+    basePoint = Point(basePointXVal, basePointYVal)
+    eceg.setBasePoint(basePoint)
 
   

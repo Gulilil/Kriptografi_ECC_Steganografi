@@ -3,7 +3,7 @@
 from type.point import Point
 import math
 
-UPPER_THRESHOLD = 1000000
-LOWER_THRESHOLD = 500000
+UPPER_THRESHOLD = 100000
+LOWER_THRESHOLD = 50000
 
 INFINITY_POINT = Point(math.inf, math.inf)

@@ -1,7 +1,7 @@
 import math
 
 def makeNumToBin (num: int) -> str:
-  return bin(num)
+  return bin(num)[2:]
 
 def makeNumToHex (num: int) -> str:
   return hex(num)[2:]

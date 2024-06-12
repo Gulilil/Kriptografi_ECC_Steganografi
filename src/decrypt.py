@@ -3,8 +3,7 @@ from type.ECEG import ECEG
 from image_processor import read_image, search_image
 from utils.functions import makeBinToHex
 from utils.calculation import makeStringToPairPointValue, getPointFromPairPointValue
-
-import os
+import time 
 
 def decryption():
 
@@ -28,6 +27,7 @@ def decryption():
     basePoint = Point(basePointXVal, basePointYVal)
     eceg.setBasePoint(basePoint)
 
+    begin = time.time()
     # Search for encrypted val
     encrypted_length = encrypted_attrib // (basePoint.y + 2 * basePoint.x)
     encrypted_value = search_image(image, basePoint, encrypted_length)
@@ -44,6 +44,9 @@ def decryption():
     print("")
     print(f"Decrypted Secret Point: {decrypted_value.getPointNumberValue()}")
     print(f"Decrypted Secret Point Hex: {decrypted_value.getPointValue()}")
+    end = time.time()
+
+    print(f"\nTotal runtime of the decryption process is {end - begin}") 
 
 
     

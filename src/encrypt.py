@@ -4,6 +4,8 @@ from utils.number import generatePrimeNumber
 from utils.functions import makeBinToHex, makeHexToBin
 from utils.calculation import getKValue, makePairPointValueToString, getValueFromPairPoint
 from image_processor import read_image, manipulate_image, save_image
+import time 
+
 
 
 def encryption():
@@ -14,6 +16,8 @@ def encryption():
   # Make sure the image is valid
   if (image is not None):
     # Initiate the ECC (ECEG)
+    begin = time.time()
+
     eceg = ECEG()
     print(f"ECC Data:\n a: {eceg.aVal}\n b: {eceg.bVal}\n p: {eceg.pVal}")
     base_point = eceg.getRandomPoint()
@@ -28,20 +32,24 @@ def encryption():
     print(f"\nUser A Data:\n Private Key: {a_private_key}\n Public Key: {a_public_key.getPointNumberValue()} | Hex Value: {a_public_key.getPointValue()}")
     print(f"\nUser B Data:\n Private Key: {b_private_key}\n Public Key: {b_public_key.getPointNumberValue()} | Hex Value: {b_public_key.getPointValue()}")
 
+    end = time.time()
+    print(f"\nTotal runtime of the setup process is {end - begin}") 
+
     # =================
     # =====ENCRYPT=====
     # =================
-
-    # Secret Point
-    secret_point = eceg.getRandomPoint()
-    k = getKValue(eceg.pVal)
-    print(f"\nSecret Point: {secret_point.getPointNumberValue()} | Hex Value: {secret_point.getPointValue()}")
-    print(f"K Value: {k}")
 
     # Determine which public key to use
     used_pub_key_hex = input("\nInsert the Hex Value of the Public Key to be used: ")
     used_pub_key = Point(0,0)
     used_pub_key.setPointValue(used_pub_key_hex)
+
+    begin = time.time()
+    # Secret Point
+    secret_point = eceg.getRandomPoint()
+    k = getKValue(eceg.pVal)
+    print(f"\nSecret Point: {secret_point.getPointNumberValue()} | Hex Value: {secret_point.getPointValue()}")
+    print(f"K Value: {k}")
 
     # Encrypt Secret Point
     pair_point = eceg.encryptECEG(k, base_point, secret_point, used_pub_key)
@@ -58,3 +66,6 @@ def encryption():
 
     # Save Image
     save_image(new_image)
+    end = time.time()
+
+    print(f"\nTotal runtime of the encryption process is {end - begin}") 
